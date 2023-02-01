@@ -33,8 +33,8 @@ The following properties are supported for Deb-type repositories:
 - architectures
    - Type: list[string]
    - Description: Architectures to enable, or restrict to, for this repository
-   - Default: If unspecified, architectures is assumed to match the host’s
-     architecture
+   - Default: If unspecified, architectures is assumed to match the host's
+     architecture only (even for multi-arch builds)
    - Examples:
       - ``architectures: [i386]``
       - ``architectures: [i386, amd64]``
@@ -55,22 +55,22 @@ The following properties are supported for Deb-type repositories:
 - key-id
    - Type: string
    - Description: 40 character GPG key identifier ("long-form thumbprint" or
-     "fingerprint")
-     If not using a key-server, Snapcraft will look for the corresponding key
-     at: ``<project>/snap/keys/<key-id[-8:]>.asc``. To determine a key-id from a
-     given key file with gpg, type the following:
+     "fingerprint"). The Craft Application will first look for the corresponding
+     key at: ``<project>/snap/keys/<key-id[-8:]>.asc``. If the key is not found,
+     the key will be fetched from the ``key-server``. To determine a key-id from
+     a given key file with gpg, type the following:
      ``gpg --import-options show-only --import <file>``
    - Format: alphanumeric, dash ``-`` , and underscores ``_`` permitted.
    - Examples:
        - ``key-id: 590CA3D8E4826565BE3200526A634116E00F4C82``
 
-         Snapcraft will install a corresponding key at
+         The Application will look for a corresponding key at
          ``<project>/snap/keys/E00F4C82.asc``
 - key-server
    - Type: string
    - Description: Key server to fetch key ``<key-id>`` from
-   - Default: If unspecified, Snapcraft will attempt to fetch a specified key
-     from keyserver.ubuntu.com
+   - Default: If unspecified, The Craft Application will attempt to fetch a
+     specified key from keyserver.ubuntu.com
    - Format: Key server URL supported by ``gpg --keyserver``
    - Examples:
        - ``key-server: keyserver.ubuntu.com``
