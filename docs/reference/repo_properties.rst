@@ -3,6 +3,7 @@ Package Repository Properties
 *****************************
 
 .. _ppa-properties:
+
 PPA properties
 ==============
 
@@ -23,6 +24,7 @@ The following properties are supported for PPA-type repositories:
 
 
 .. _deb-properties:
+
 Deb properties
 ==============
 

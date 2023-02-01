@@ -5,8 +5,8 @@ It's possible to add your own apt repositories as sources for build-packages and
 stage-packages, including those hosted on a PPA, the Personal Package Archive,
 which serves personally hosted non-standard packages.
 
-Third-party apt repositories can be added to the project file of a Craft
-Application (like Snapcraft, Rockcraft, or Charmcraft) by using the top-level
+Third-party repositories can be added to the project file of a Craft Application
+(like Snapcraft, Rockcraft, or Charmcraft) by using the top-level
 ``package-repositories`` keyword with either a PPA-type repository, or a
 deb-type repository:
 
