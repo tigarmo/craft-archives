@@ -6,6 +6,8 @@ Reference
 .. toctree::
    :maxdepth: 1
 
+   repo_properties
+
 Indices and tables
 ==================
 
