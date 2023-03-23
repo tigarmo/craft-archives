@@ -237,6 +237,20 @@ def test_install_key(
     ]
 
 
+def test_install_key_missing_dir(mock_run, mock_chmod, tmp_path, key_assets):
+    keyrings_path = tmp_path / "keyrings"
+    assert not keyrings_path.exists()
+
+    apt_gpg = AptKeyManager(
+        keyrings_path=keyrings_path,
+        key_assets=key_assets,
+    )
+    mock_run.return_value.stdout = SAMPLE_GPG_SHOW_KEY_OUTPUT
+
+    apt_gpg.install_key(key=SAMPLE_KEY)
+    assert keyrings_path.exists()
+
+
 def test_install_key_with_gpg_failure(apt_gpg, mock_run):
     mock_run.side_effect = [
         subprocess.CompletedProcess(
