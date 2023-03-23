@@ -118,7 +118,9 @@ class AptKeyManager:
 
         :returns: List of key fingerprints/IDs.
         """
-        response = _call_gpg("--show-keys", stdin=key.encode()).splitlines()
+        response = _call_gpg(
+            "--import-options", "show-only", "--import", stdin=key.encode()
+        ).splitlines()
         fingerprints: List[str] = []
         for line in response:
             if line.startswith(b"fpr:"):
